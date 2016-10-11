@@ -1,0 +1,16 @@
+.exam .sub{
+	text-align: center;
+	margin-bottom: 10%;
+	margin-top: 10%;
+}
+.exam .sub input{
+	margin-top:15px;
+    background: #45B549;
+    line-height: 35px;
+    width: 150px;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    border: none;
+    border-radius: 5px;
+}

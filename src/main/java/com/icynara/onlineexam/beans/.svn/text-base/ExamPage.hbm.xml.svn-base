@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.icynara.onlineexam.beans.ExamPage" table="EXAMPAGE">
+    <cache usage="read-write"/>
+        <id name="id" type="java.lang.Integer">
+            <column name="EXAM_ID" />
+            <generator class="native" />
+        </id>
+        <property name="examTitle" type="java.lang.String">
+            <column name="EXAM_TITLE" />
+        </property>
+        <property name="examDesc" type="java.lang.String">
+            <column name="EXAM_DESC" />
+        </property>
+        <property name="examContext" type="text">
+            <column name="EXAM_CONTEXT" />
+        </property>
+        <property name="examTime" type="integer">
+            <column name="EXAM_TIME" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATE_TIME" />
+        </property>
+        <property name="overdueTime" type="java.util.Date">
+            <column name="OVERDUE_TIME" />
+        </property>
+        <many-to-one name="adminUser" class="com.icynara.onlineexam.beans.AdminUser" lazy="proxy" fetch="join">
+            <column name="AU_ID" />
+        </many-to-one>
+        <property name="examResult" type="java.lang.String">
+            <column name="EXAM_RESULT" />
+        </property>
+        
+        <set name="sss" table="STUSCORE" inverse="true">
+        <cache usage="read-write"/>
+        	<key column="EXAM_ID"></key>
+        	<one-to-many class="com.icynara.onlineexam.beans.StuScore"/>
+        </set>
+        <set name="exs" table="EXAMQUESTION" inverse="true">
+        <cache usage="read-write"/>
+        	<key column="EXAM_ID"></key>
+        	<one-to-many class="com.icynara.onlineexam.beans.ExamQuestion"/>
+        </set>
+    </class>
+</hibernate-mapping>

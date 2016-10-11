@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<constant name="struts.devMode" value="false"></constant>
+	<constant name="struts.action.extension" value="action,,do"></constant>
+	<!-- OGNL执行任意静态java代码 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.multipart.saveDir" value="/tmp"></constant>
+	
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="adminUserAction_*" class="adminUserAction" method="{1}">
+			<result name="loginSuccess">/WEB-INF/jsp/admin/index.jsp</result>
+			<result name="listAll">/WEB-INF/jsp/admin/listAllAdminUser.jsp</result>
+			<result name="updateUI">/WEB-INF/jsp/admin/updateAdminUser.jsp</result>
+			<result name="error">/admin/login.jsp</result>
+			<result name="message">/admin/message.jsp</result>
+		</action>
+		
+		<action name="studentAction_*" class="studentAction" method="{1}">
+			<result name="listAll">/WEB-INF/jsp/admin/listAllStudent.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/admin/addOrUpdateStudent.jsp</result>
+			<result name="updateUI">/WEB-INF/jsp/admin/addOrUpdateStudent.jsp</result>
+			<result name="registerUI">/regiest.jsp</result>
+			<result name="loginSuccess">/WEB-INF/jsp/student/index.jsp</result>
+			<result name="listExamPage">/WEB-INF/jsp/student/list.jsp</result>
+			<result name="listStuScore">/WEB-INF/jsp/student/listStuScore.jsp</result>
+			<result name="error">/index.jsp</result>
+			<result>/index.jsp</result>
+		</action>
+		
+		<action name="stuClassAction_*" class="stuClassAction" method="{1}">
+			<result name="listAll">/WEB-INF/jsp/admin/listAllClass.jsp</result>
+			<result name="updateUI">/WEB-INF/jsp/admin/addOrUpdateClass.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/admin/addOrUpdateClass.jsp</result>
+		</action>
+		
+		<action name="examPageAction_*" class="examPageAction" method="{1}">
+			<result name="listAll">/WEB-INF/jsp/admin/listAllExamPage.jsp</result>
+			<result name="updateUI">/WEB-INF/jsp/admin/addOrUpdateExamPage.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/admin/addOrUpdateExamPage.jsp</result>
+			<result name="exam">/exam/examPage.jsp</result>
+			<result name="login">/index.jsp</result>
+		</action>
+		
+		<action name="examQuestionAction_*" class="examQuestionAction" method="{1}">
+			<result name="addUI">/WEB-INF/jsp/admin/addExamQuestion.jsp</result>
+			<result name="listAll">/WEB-INF/jsp/admin/listAllQuestion.jsp</result>
+		</action>
+		
+		<action name="score_*" class="examScoreAction" method="{1}">
+			<result name="examInfo">/exam/info.jsp</result>
+		</action>
+		
+		<action name="stuScore_*" class="stuScoreAction" method="{1}">
+			<result name="listAll">/WEB-INF/jsp/admin/listAllScore.jsp</result>
+		</action>
+	</package>
+</struts>

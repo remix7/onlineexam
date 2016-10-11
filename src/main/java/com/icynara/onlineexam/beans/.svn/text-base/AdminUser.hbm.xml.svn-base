@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.icynara.onlineexam.beans.AdminUser" table="ADMINUSER">
+		<id name="id" type="java.lang.Integer">
+			<column name="AU_ID" />
+			<generator class="native" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="AU_NAME" />
+		</property>
+		<property name="phone" type="java.lang.String">
+			<column name="AU_PHONE" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="AU_EMAIL" />
+		</property>
+		<property name="au_Desc" type="java.lang.String">
+			<column name="AU_DESC" />
+		</property>
+		<property name="username" type="java.lang.String">
+			<column name="AU_USERNAME" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="AU_PASSWORD" />
+		</property>
+		<property name="createTime" type="java.util.Date">
+			<column name="AU_CREATETIME" />
+		</property>
+		<property name="state" type="java.lang.String">
+			<column name="AU_STATE" />
+		</property>
+		<set name="eps" table="EXAMPAGE" inverse="true" lazy="true" cascade="save-update">
+			<key>
+				<column name="AU_ID" />
+			</key> 
+			<one-to-many class="com.icynara.onlineexam.beans.ExamPage" />
+		</set>
+		
+		<set name="scs" table="STUCLASS"  inverse="true" lazy="true" cascade="save-update">
+			<key column="AU_ID"></key>
+			<one-to-many class="com.icynara.onlineexam.beans.StuClass"/>
+		</set>
+	</class>
+</hibernate-mapping>

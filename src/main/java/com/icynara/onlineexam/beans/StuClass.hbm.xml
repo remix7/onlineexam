@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.icynara.onlineexam.beans.StuClass" table="STUCLASS">
+		<id name="id" type="java.lang.Integer">
+			<column name="CLASS_ID" />
+			<generator class="native" />
+		</id>
+		<property name="calssNum" type="java.lang.String">
+			<column name="CALSS_NUM" />
+		</property>
+		<property name="className" type="java.lang.String">
+			<column name="CLASS_NAME" />
+		</property>
+		<property name="createTime" type="java.util.Date">
+			<column name="CREATE_TIME" />
+		</property>
+		<property name="classState" type="java.lang.String">
+			<column name="CLASS_STATE" />
+		</property>
+		<set name="stus" table="STUDENT" inverse="true">
+			<key>
+				<column name="CLASS_ID" />
+			</key>
+			<one-to-many class="com.icynara.onlineexam.beans.Student" />
+		</set>
+		<many-to-one name="adminUser" class="com.icynara.onlineexam.beans.AdminUser" column="AU_ID" cascade="save-update"></many-to-one>
+	</class>
+</hibernate-mapping>

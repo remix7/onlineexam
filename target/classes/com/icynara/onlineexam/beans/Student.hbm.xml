@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-9-1 19:32:18 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.icynara.onlineexam.beans.Student" table="STUDENT">
+    <cache usage="read-write"/>
+        <id name="id" type="java.lang.Integer">
+            <column name="STU_ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="STU_NAME" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="STU_PHONE" />
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="STU_AGE" />
+        </property>
+        <property name="stuNum" type="java.lang.String">
+            <column name="STU_STRNUM" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="STU_USERNAME" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="STU_PASSWORD" />
+        </property>
+        <property name="registerTime" type="java.util.Date">
+            <column name="REGISTER_TIME" />
+        </property>
+        <property name="stuState" type="java.lang.Integer">
+            <column name="STU_STATE" />
+        </property>
+          <many-to-one name="stuClass" class="com.icynara.onlineexam.beans.StuClass" fetch="join">
+            <column name="CLASS_ID" />
+        </many-to-one>
+        <set name="sss" table="STUSCORE" inverse="true">
+        <cache usage="read-write"/>
+        	<key column="STU_ID"></key>
+        	<one-to-many class="com.icynara.onlineexam.beans.StuScore"/>
+        </set>
+    </class>
+</hibernate-mapping>
